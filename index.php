@@ -1,29 +1,26 @@
 <?php
 
-$colorOne = "yellow";
-$colorTwo = "red";
+$colorOne = "red";
+$colorTwo = "white";
 
 
 $c1 = strtolower($colorOne);
 $c2 = strtolower($colorTwo);
 
-if ($c1 === $c2) {
+$allowedColors = ['yellow', 'red', 'blue', 'white', 'black'];
+
+if (!in_array($c1, $allowedColors) || !in_array($c2, $allowedColors)) {
+    $result = 'unknown color';
+} 
+elseif ($c1 === $c2) {
     $result = $c1;
 } 
 elseif ($c1 === 'white' || $c2 === 'white') {
-    if ($c1 === 'white') {
-        $otherColor = $c2;
-    } else {
-        $otherColor = $c1;
-    }
+    $otherColor = ($c1 === 'white') ? $c2 : $c1;
     $result = "light-" . $otherColor;
 }
 elseif ($c1 === 'black' || $c2 === 'black') {
-    if ($c1 === 'black') {
-        $otherColor = $c2;
-    } else {
-        $otherColor = $c1;
-    }
+    $otherColor = ($c1 === 'black') ? $c2 : $c1;
     $result = "dark-" . $otherColor;
 }
 else {
